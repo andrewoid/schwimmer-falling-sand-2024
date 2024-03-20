@@ -46,6 +46,18 @@ public class Sand {
     public void put(int x, int y) {
         field[y][x] = 1;
     }
+    
+    /**
+     * Add sand to field
+     *
+     * @param x           centerX
+     * @param y           centerY
+     * @param radius      the radius of the circle
+     * @param probability that an empty spot in the circle will be sand.
+     */
+    public void put(int x, int y, int radius, double probability) {
+
+    }
 
     /**
      * Sets the field to be the values in s. The format of s should be the same as the format of the String in toString
@@ -141,17 +153,4 @@ public class Sand {
     public void resize(int width, int height) {
 
     }
-
-    /**
-     * Add sand to field
-     *
-     * @param x           centerX
-     * @param y           centerY
-     * @param radius      the radius of the circle
-     * @param probability that an empty spot in the circle will be sand.
-     */
-    public void put(int x, int y, int radius, double probability) {
-
-    }
-
 }
