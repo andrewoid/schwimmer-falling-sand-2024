@@ -39,6 +39,14 @@ public class Sand {
         field[y][x] = 1;
     }
 
+    /**
+     * Sets the field to be the values in s. The format of s should be the same as the format of the String in toString
+     *
+     * @param s
+     */
+    public void load(String s) {
+    }
+
     public String toString() {
         StringBuilder builder = new StringBuilder();
 
@@ -130,6 +138,28 @@ public class Sand {
      */
     public boolean inBounds(int x, int y) {
         return 0 <= x && x < field[y].length;
+    }
+
+    /**
+     * Change the width and height of the field. Keep the contents.
+     *
+     * @param width
+     * @param height
+     */
+    public void resize(int width, int height) {
+
+    }
+
+    /**
+     * Add sand to field
+     *
+     * @param x
+     * @param y
+     * @param radius      the radius of the circle
+     * @param probability that an empty spot in the circle will be sand.
+     */
+    public void put(int x, int y, int radius, double probability) {
+
     }
 
 }
