@@ -49,8 +49,6 @@ public class Sand {
 
     /**
      * Sets the field to be the values in s. The format of s should be the same as the format of the String in toString
-     *
-     * @param s
      */
     public void load(String s) {
     }
@@ -89,8 +87,6 @@ public class Sand {
     }
 
     /**
-     * @param x
-     * @param y
      * @return true if there is sand at the coordinates, otherwise false
      */
     public boolean isSand(int x, int y) {
@@ -99,9 +95,6 @@ public class Sand {
 
     /**
      * Moves the sand down one square, or diagonally to the right or left
-     *
-     * @param x
-     * @param y
      */
     private void moveSandDown(int x, int y) {
         // move down
@@ -113,21 +106,17 @@ public class Sand {
         int direction = random.nextBoolean() ? +1 : -1;
 
         // move diagonally down in one direction
-        if (move(x, y, x - direction, y + 1)) {
+        if (move(x, y, x + direction, y + 1)) {
             return;
         }
 
         // move diagonally down in the other direction
-        move(x, y, x + direction, y + 1);
+        move(x, y, x - direction, y + 1);
     }
 
     /**
      * Attempts to move the sand from x1, y1 to x2, y2
      *
-     * @param x1
-     * @param y1
-     * @param x2
-     * @param y2
      * @return true if the move was successful, otherwise false
      */
     public boolean move(int x1, int y1, int x2, int y2) {
@@ -140,8 +129,6 @@ public class Sand {
     }
 
     /**
-     * @param x
-     * @param y
      * @return true if the coordinates are in the field, otherwise false
      */
     public boolean inBounds(int x, int y) {
@@ -150,9 +137,6 @@ public class Sand {
 
     /**
      * Change the width and height of the field. Keep the contents.
-     *
-     * @param width
-     * @param height
      */
     public void resize(int width, int height) {
 
@@ -161,8 +145,8 @@ public class Sand {
     /**
      * Add sand to field
      *
-     * @param x
-     * @param y
+     * @param x           centerX
+     * @param y           centerY
      * @param radius      the radius of the circle
      * @param probability that an empty spot in the circle will be sand.
      */
