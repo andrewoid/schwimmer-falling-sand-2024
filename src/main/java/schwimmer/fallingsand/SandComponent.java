@@ -1,8 +1,9 @@
 package schwimmer.fallingsand;
 
-import javax.swing.JComponent;
+import javax.swing.*;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.*;
 
 public class SandComponent extends JComponent {
 
@@ -10,6 +11,48 @@ public class SandComponent extends JComponent {
 
     public SandComponent(Sand sand) {
         this.sand = sand;
+
+        Timer timer = new Timer(10, e -> repaint());
+        timer.start();
+
+        addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                sand.put(e.getX(), e.getY());
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+
+        addMouseMotionListener(new MouseMotionListener() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                sand.put(e.getX(), e.getY());
+            }
+
+            @Override
+            public void mouseMoved(MouseEvent e) {
+
+            }
+        });
     }
 
     @Override
@@ -17,7 +60,6 @@ public class SandComponent extends JComponent {
         super.paintComponent(g);
 
         // draw the sand
-
         sand.fall();
 
         g.setColor(Color.darkGray);
@@ -28,7 +70,5 @@ public class SandComponent extends JComponent {
                 }
             }
         }
-
-        repaint();
     }
 }
