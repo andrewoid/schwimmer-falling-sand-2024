@@ -2,9 +2,11 @@ package schwimmer.fallingsand;
 
 import java.util.Random;
 
+import static java.lang.Math.min;
+
 public class Sand {
 
-    private final int[][] field;
+    private int[][] field;
 
     private final Random random;
 
@@ -50,19 +52,45 @@ public class Sand {
     /**
      * Add sand to field
      *
-     * @param x           centerX
-     * @param y           centerY
-     * @param radius      the radius of the circle
-     * @param probability that an empty spot in the circle will be sand.
+     * @param startX     top left of the rectangle
+     * @param startY     top left of the rectangle
+     * @param width
+     * @param height
+     * @param probability that an empty spot in the rectangle will be sand.
      */
-    public void put(int x, int y, int radius, double probability) {
-
+    public void put(int startX, int startY, int width, int height, double probability) {
+        for (int y = startY; y < startY + height; y++) {
+            for (int x = startX; x < startX + width; x++) {
+                if (random.nextDouble() <= probability) {
+                    field[y][x] = 1;
+                }
+            }
+        }
     }
 
     /**
      * Sets the field to be the values in s. The format of s should be the same as the format of the String in toString
      */
     public void load(String s) {
+        int y = 0;
+        int x = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            switch (c) {
+                case '\n' -> {
+                    y++;
+                    x = 0;
+                }
+                case '1' -> {
+                    field[y][x] = 1;
+                    x++;
+                }
+                case '0' -> {
+                    field[y][x] = 0;
+                    x++;
+                }
+            }
+        }
     }
 
     public String toString() {
@@ -151,6 +179,17 @@ public class Sand {
      * Change the width and height of the field. Keep the contents.
      */
     public void resize(int width, int height) {
+        if (height == field.length && width == field[0].length) {
+            return;
+        }
+        int[][] newField = new int[height][width];
 
+        for (int y = 0; y < min(field.length, newField.length); y++) {
+            for (int x = 0; x < min(field[y].length, newField[y].length); x++) {
+                newField[y][x] = field[y][x];
+            }
+        }
+
+        field = newField;
     }
 }
