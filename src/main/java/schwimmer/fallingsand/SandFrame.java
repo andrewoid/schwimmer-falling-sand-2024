@@ -6,7 +6,6 @@ import java.awt.BorderLayout;
 
 public class SandFrame extends JFrame {
 
-    @Inject
     public SandFrame(Sand sand,
                      SandComponent sandComponent,
                      int width,
