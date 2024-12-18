@@ -1,7 +1,10 @@
 package schwimmer.fallingsand;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.util.Random;
 
+@Singleton
 public class Sand {
 
     private final int[][] field;

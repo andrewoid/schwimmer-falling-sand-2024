@@ -1,5 +1,6 @@
 package schwimmer.fallingsand;
 
+import javax.inject.Inject;
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -9,6 +10,7 @@ public class SandComponent extends JComponent {
 
     private final Sand sand;
 
+    @Inject
     public SandComponent(Sand sand) {
         this.sand = sand;
 

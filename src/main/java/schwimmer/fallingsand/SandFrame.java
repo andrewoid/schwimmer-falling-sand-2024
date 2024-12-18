@@ -1,14 +1,18 @@
 package schwimmer.fallingsand;
 
+import javax.inject.Inject;
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
 
 public class SandFrame extends JFrame {
 
-    private final Sand sand = new Sand(300, 400);
-
-    public SandFrame() {
-        setSize(800, 600);
+    @Inject
+    public SandFrame(Sand sand,
+                     SandComponent sandComponent,
+                     int width,
+                     int height
+    ) {
+        setSize(width, height);
         setTitle("Falling Sand");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -16,7 +20,6 @@ public class SandFrame extends JFrame {
 
         sand.randomSand(4000);
 
-        SandComponent sandComponent = new SandComponent(sand);
         add(sandComponent, BorderLayout.CENTER);
     }
 
